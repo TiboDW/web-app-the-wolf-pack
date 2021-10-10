@@ -7,7 +7,7 @@ De bedoeling is om de website van onze lokale bioscoop te verbeteren. De Focus b
 - https://tickets.cinemafocus.be/nl/movies
 
 
-Ons dynamisch website zal ervoor zorgen dat de bioscoop over één website beschikt waar een duidelijk en modern overzicht van de actuele en aankomende films getoond zal worden. Verder zullen de aankopen op diezelfde website gebeuren.
+Onze dynamische website zal ervoor zorgen dat de bioscoop over één website beschikt waar een duidelijk en modern overzicht van de actuele en aankomende films getoond zal worden. Verder zullen de aankopen op diezelfde website gebeuren.
 
 # Acceptance criteria
 *How do we know that the goals have been reached?*
