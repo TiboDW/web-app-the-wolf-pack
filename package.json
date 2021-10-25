@@ -1,0 +1,26 @@
+{
+  "name": "web-app-the-wolf-pack",
+  "version": "1.0.0",
+  "description": "*Describe how this web app will (eventually) earn money or make the world a better place*",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node ./API/app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/EHB-TI/web-app-the-wolf-pack.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/EHB-TI/web-app-the-wolf-pack/issues"
+  },
+  "homepage": "https://github.com/EHB-TI/web-app-the-wolf-pack#readme",
+  "dependencies": {
+    "axios": "^0.24.0",
+    "cheerio": "^1.0.0-rc.10",
+    "express": "^4.17.1"
+  }
+}
