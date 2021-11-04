@@ -21,6 +21,8 @@ Onze dynamische website zal ervoor zorgen dat de bioscoop over één website bes
 - Als klant kan ik een programma zien van wanneer een film zal worden afgespeeld
 - Als klant kan ik mijn klantgegevens wijzigen
 - Als klant kan ik uitloggen van mijn account
+- Als klant kan ik online tickets aankopen
+- Als klant kan ik me uitschrijven van de website
 
 ## Beheerder
 
@@ -28,6 +30,8 @@ Onze dynamische website zal ervoor zorgen dat de bioscoop over één website bes
 - Als beheerder kan ik films toevoegen
 - Als beheerder kan ik het programma aanmaken voor de films
 - Als beheerder kan ik uitloggen van mijn account
+- Als beheerder kan ik me uitschrijven van de website
+- Als beheerder kan ik andere beheerders toevoegen
 
 # Threat model
 *Describe your threat model. One or more architectural diagram expected. Also a list of the principal threats and what you will do about them*
