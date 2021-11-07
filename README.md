@@ -42,7 +42,7 @@ Onze dynamische website zal ervoor zorgen dat de bioscoop over één website bes
 # Threat model
 *Describe your threat model. One or more architectural diagram expected. Also a list of the principal threats and what you will do about them*
 
-![ThreatModelDFD](https://user-images.githubusercontent.com/64362709/137628823-c1efba2d-7673-412f-b86f-14342d3aaadc.jpg)
+![ThreatModelDFD](https://user-images.githubusercontent.com/64362709/140662745-0ae5b189-eb9e-4189-afd7-124ce07df2cf.jpg)
 
 ## OWASP:
 | Web Application Security Risks  | Beschrijving van de bedreigingen | Oplossing |
