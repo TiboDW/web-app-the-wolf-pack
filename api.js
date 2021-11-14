@@ -35,9 +35,7 @@ const checkForAdminPermissions = jwtAuthz(['read:movies', 'create:movies', 'upda
     checkAllScopes: true
 });
 
-const URI = `mongodb+srv://${process.env.USER}:${process.env.PASSWORD}@focus.qwq5l.mongodb.net/${process.env.DB}?retryWrites=true&w=majority`;
-
-mongoose.connect(URI, {useNewUrlParser: true, useUnifiedTopology: true})
+mongoose.connect(process.env.MONGODB_URI, {useNewUrlParser: true, useUnifiedTopology: true})
         .then(db => {
             Movie.find({}).then((res) => {
                 if (res.length === 0) {
@@ -55,24 +53,78 @@ mongoose.connect(URI, {useNewUrlParser: true, useUnifiedTopology: true})
         .catch(err => console.log(err));
 
 // PUBLIC ROUTES
-app.get("/movies", async(req,res) => {
-    res.send(await Movie.find({}));
+app.get("/movies", async(req,res, next) => {
+    try {
+        const movies = await Movie.find({});
+        res.status(200).send(movies);
+    } 
+    catch (err) { 
+        next(err);
+    }
 });
 
-app.get("/movies/:id", async(req,res) => {
-   res.send(await Movie.findById(req.params.id));
+app.get("/movies/:id", async(req,res, next) => {
+   try {
+         const movie = await Movie.findById(req.params.id);
+         res.status(200).send(movie);
+   }
+   catch (err) {
+       err.status = 404;
+       err.name = "NotFoundError"
+       err.message = "Movie not found";
+       next(err);
+   }
 });
 
 // PROTECTED ROUTES (only for admins)
-app.post("/movies",checkToken, checkForAdminPermissions, async(req,res) => { 
-    res.send(await Movie.create(req.body));
+app.post("/movies",checkToken, checkForAdminPermissions, async(req,res, next) => { 
+    try {
+        const newMovie = new Movie(req.body);
+        await newMovie.save();
+        res.status(201).send(newMovie);
+    }
+    catch (err) {
+        next(err);
+    }
 });
 
-app.put('/movies/:id',checkToken, checkForAdminPermissions, async(req,res) => {
-    res.send(await Movie.findByIdAndUpdate(req.params.id, req.body, {new: true}));
+app.put('/movies/:id',checkToken, checkForAdminPermissions, async(req,res, next) => {
+    try {
+        const updatedMovie = await Movie.findByIdAndUpdate(req.params.id, req.body, {new: true});
+        console.log(updatedMovie);
+        res.status(200).send(updatedMovie);
+    }
+    catch(err) {
+        next(err);
+    }
 });
 
-app.delete("/movies/:id",checkToken, checkForAdminPermissions, async(req,res) => {
-   res.send(await Movie.findByIdAndDelete(req.params.id));
+app.delete("/movies/:id",checkToken, checkForAdminPermissions, async(req,res, next) => {
+   try {
+        await Movie.findByIdAndDelete(req.params.id);
+        res.status(204).send({});
+   }
+   catch (err) {
+       err.status = 404;
+       err.name = "NotFoundError"
+       err.message = "Movie not found";
+       next(err);
+   }
+});
+
+app.use((error, req, res, next) => {
+    if (error.name === "UnauthorizedError") {
+        res.status(error.status || 500).send({
+            message: "Missing or invalid token",
+            status: error.status || 500,
+            name: error.name
+        });
+        return;
+    }
+    res.status(error.status || 500).send({
+            message: error.message,
+            status:  error.status || 500,
+            name: error.name
+    });
 });
 
