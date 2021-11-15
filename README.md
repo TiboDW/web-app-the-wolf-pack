@@ -1,76 +1,70 @@
-# Goal
-*Describe how this web app will (eventually) earn money or make the world a better place*
+# Getting Started with Create React App
 
-De bedoeling is om de website van onze lokale bioscoop te verbeteren. De Focus bioscoop heeft momenteel twee websites. De eerste website geeft een overzicht van de actuele films, de tweede website wordt gebruikt als webshop waar de klanten hun tickets kunnen aankopen.
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-- http://www.cinemafocus.be/
-- https://tickets.cinemafocus.be/nl/movies
+## Available Scripts
 
+In the project directory, you can run:
 
-Onze dynamische website zal ervoor zorgen dat de bioscoop over één website beschikt waar een duidelijk en modern overzicht van de actuele en aankomende films getoond zal worden. Verder zullen de aankopen op diezelfde website gebeuren.
+### `npm start`
 
-# Acceptance criteria
-*How do we know that the goals have been reached?*
+Runs the app in the development mode.\
+Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-## Klant
+The page will reload if you make edits.\
+You will also see any lint errors in the console.
 
-- Als klant kan ik een account aanmaken
-- Als klant kan ik mij inloggen op mijn account
-- Als klant kan ik een overzicht zien van actuele en/of toekomstige films
-- Als klant kan ik een beschrijving lezen van een film
-- Als klant kan ik een programma zien van wanneer een film zal worden afgespeeld
-- Als klant kan ik mijn klantgegevens wijzigen/bekijken
-- Als klant kan ik uitloggen van mijn account
-- Als klant kan ik online tickets aankopen
-- Als klant kan ik me uitschrijven van de website
+### `npm test`
 
-## Beheerder
+Launches the test runner in the interactive watch mode.\
+See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-- Als beheerder kan ik inloggen op mijn account
-- Als beheerder kan ik films toevoegen
-- Als beheerder kan ik het programma aanmaken voor de films
-- Als beheerder kan ik uitloggen van mijn account
-- Als beheerder kan ik me uitschrijven van de website
-- Als beheerder kan ik andere beheerders toevoegen
+### `npm run build`
 
-## Bezoeker
+Builds the app for production to the `build` folder.\
+It correctly bundles React in production mode and optimizes the build for the best performance.
 
-- Als bezoeker kan ik een overzicht zien van actuele en/of toekomstige films
-- Als bezoeker kan ik een beschrijving lezen van een film
-- Als bezoeker kan ik een programma zien van wanneer een film zal worden afgespeeld
+The build is minified and the filenames include the hashes.\
+Your app is ready to be deployed!
 
-# Threat model
-*Describe your threat model. One or more architectural diagram expected. Also a list of the principal threats and what you will do about them*
+See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-![ThreatModelDFD](https://user-images.githubusercontent.com/64362709/140662745-0ae5b189-eb9e-4189-afd7-124ce07df2cf.jpg)
+### `npm run eject`
 
-## OWASP:
-| Web Application Security Risks  | Beschrijving van de bedreigingen | Oplossing |
-| ------------- | ------------- | ------------- |
-| Broken Access Control  | Een limiet stellen aan welke webpagina's bezoekers kunnen bereiken, afhankelijk van hun behoeften.  | De webpagina's correct gaan toekennen aan de klanten en beheerders door middel van authenticatie en autorisatie  |
-| Cryptographic Failures  | Blootstelling aan gevoelige gegevens  | Gevoelige gegevens encrypteren, onnodige data niet opslaan en gebruikmaken van HTTPS  |
-| Injection  | Een aanvaller die gegevens naar de webtoepassing zendt met bedoeling deze iets te laten doen waarvoor de toepassing niet is ontworpen | Gegevens gescheiden houden van command's en query's. |
-| Insecure Design  | Onveilig architectuur ontwerp uitgewerkt  | Use cases en threat model beter uitschrijven, de correcte design patterns gebruiken  |
-| Security Misconfiguration  | Slechte configuratie van de webtoepassing  | Onnodige componenten (frameworks, poorten, functionaliteiten) weglaten  |
-| Vulnerable and Outdated Components  | Outdated en unsupported componenten gebruiken  | Onnodige dependencies verwijderen en SCA tools gebruiken |
-| Identification and Authentication Failures  | Ineffectief identificeren en authoriseren  | Vermijden van zwakke credentials te gebruiken, 2FA, web api beveiligen door middel JWT authentication  |
-| Software and Data Integrity Failures  | Gebruiken van niet gevalideerde libararies/plugins   | Gebruikmaken van libraries/plugins die erkend zijn op bepaalde websites (NPM)  |
-| Security Logging and Monitoring Failures  | Onvoldoende logging, detectie en monitoring  | De belangrijke activiteiten lokaal bijhouden in logs |
-| Server-Side Request Forgery  | Niet valideren van externe bronnen  | HTTP omleiding uitschakelen, dwing "deny by default" policies en alles behalve essentieel verkeer blokkeren |
+**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
 
-## STRIDE:
-| Threat  | Beschrijving van de bedreigingen | Oplossing |
-| ------------- | ------------- | ------------- |
-| Spoofing  | Een persoon of een programma doet zich voor als iemand anders | Authentication |
-| Tampering  | Data aangepast is zonder dat men dit weet (geen data integrity) | Encryptie van data in transit |
-| Repudiation  | Zeggen dat je een bepaalde actie niet hebt uitgevoerd | Wanneer een betaling wordt uitgevoerd een email voorzien van de aankoop of een PDF met daarin de aankoop factuur |
-| Information disclosure  | Blootleggen van informatie aan iemand die niet geauthoriseerd is | Rollen toekennen (Klant, Beheerder en Bezoeker) |
-| Denial of service  | Is een situatie waarin het systeem onbedoeld niet beschikbaar is om een taak uit te voeren van een gebruiker | Combell |
-| Elevation of privilege  | Bepaalde zaken kunnen doen zonder authorisatie | Rollen toekennen (Klant, Beheerder en Bezoeker) |
+If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-# Deployment
-*Minimally, this section contains a public URL of the app. A description of how your software is deployed is a bonus. Do you do this manually, or did you manage to automate? Have you taken into account the security of your deployment process?*
+Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
 
+You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
-# *You may want further sections*
-*Especially if the use of your application is not self-evident*
+## Learn More
+
+You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+
+To learn React, check out the [React documentation](https://reactjs.org/).
+
+### Code Splitting
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+
+### Analyzing the Bundle Size
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+
+### Making a Progressive Web App
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+
+### Advanced Configuration
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+
+### Deployment
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+
+### `npm run build` fails to minify
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
