@@ -9,8 +9,9 @@ import Footer from './components/Footer';
 import Film from './pages/Film';
 import AdminDashboard from './pages/AdminDashboard';
 import AdminFilms from './pages/AdminFilms';
-import AdminFilmsToevoegenVerwijderen from './pages/AdminFilmsToevoegenVerwijderen';
+import AdminFilmsAanpassen from './pages/AdminFilmsAanpassen';
 import UserInstellingen from './pages/UserInstellingen';
+import AdminFilmsToevoegen from './pages/AdminFilmsToevoegen';
 
 
 function App() {
@@ -28,7 +29,8 @@ function App() {
 
           <Route path='/admin/dashboard' element={<AdminDashboard />} />
           <Route path='/admin/films' element={<AdminFilms />} />
-          <Route path='/admin/films/1' element={<AdminFilmsToevoegenVerwijderen />} />
+          <Route path='admin/films/toevoegen' element={<AdminFilmsToevoegen />} />
+          <Route path='/admin/films/1' element={<AdminFilmsAanpassen />} />
 
           <Route path="/user/instellingen" element={<UserInstellingen />} />
         </Routes>

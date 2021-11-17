@@ -2,7 +2,7 @@ import React from "react";
 
 export const Contact = () => {
   return (
-    <div className="App">
+    <div className="App font-bold">
       <div class="container mx-auto px-6 mt-16 text-left text-color-footer">
         Contacteer ons
         <div class="border-t-2 border-gray-300 flex flex-col items-left">

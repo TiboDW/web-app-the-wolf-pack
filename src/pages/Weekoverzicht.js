@@ -1,8 +1,9 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 export const Weekoverzicht = () => {
   return (
-    <div className="App">
+    <div className="App font-bold">
       <div class="container mx-auto px-6 mt-16 text-left text-color-footer">
         Weekoverzicht
         <div class=" border-t-2 border-gray-300 flex flex-col items-left">
@@ -52,13 +53,13 @@ export const Weekoverzicht = () => {
           </div>
           <div class="grid grid-cols-2 gap-2 place-content-start mt-10 overflow-auto no-scroll h-96 w-auto">
             <div class="ml-20 font-bold mt-10">
-              <img
+            <Link to="/film"><img
                 class="h-72 w-auto float-left"
                 src="/images/Venom2.jpg"
                 alt="Workflow"
                 height="20%"
                 width="20%"
-              />
+              /></Link>
               <p class="text-center">Venom: Let there be carnage</p>
               <br />
               <p class="text-center shadow focus:shadow-outline focus:outline-none">
@@ -70,13 +71,13 @@ export const Weekoverzicht = () => {
               </p>
             </div>
             <div class="ml-20 font-bold mt-10">
-              <img
+            <Link to="/film"><img
                 class="h-72 w-auto float-left"
                 src="/images/Venom2.jpg"
                 alt="Workflow"
                 height="20%"
                 width="20%"
-              />
+              /></Link>
               <p class="text-center">Venom: Let there be carnage</p>
               <br />
               <p class="text-center shadow focus:shadow-outline focus:outline-none">
@@ -88,13 +89,13 @@ export const Weekoverzicht = () => {
               </p>
             </div>
             <div class="ml-20 font-bold mt-10">
-              <img
+            <Link to="/film"><img
                 class="h-72 w-auto float-left"
                 src="/images/Venom2.jpg"
                 alt="Workflow"
                 height="20%"
                 width="20%"
-              />
+              /></Link>
               <p class="text-center">Venom: Let there be carnage</p>
               <br />
               <p class="text-center shadow focus:shadow-outline focus:outline-none">
@@ -106,13 +107,13 @@ export const Weekoverzicht = () => {
               </p>
             </div>
             <div class="ml-20 font-bold mt-10">
-              <img
+            <Link to="/film"><img
                 class="h-72 w-auto float-left"
                 src="/images/Venom2.jpg"
                 alt="Workflow"
                 height="20%"
                 width="20%"
-              />
+              /></Link>
               <p class="text-center">Venom: Let there be carnage</p>
               <br />
               <p class="text-center shadow focus:shadow-outline focus:outline-none">
