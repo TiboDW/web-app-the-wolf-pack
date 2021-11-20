@@ -12,6 +12,8 @@ import AdminFilms from './pages/AdminFilms';
 import AdminFilmsAanpassen from './pages/AdminFilmsAanpassen';
 import UserInstellingen from './pages/UserInstellingen';
 import AdminFilmsToevoegen from './pages/AdminFilmsToevoegen';
+import AdminKalender from './pages/AdminKalender';
+import AdminInstellingen from './pages/AdminInstellingen';
 
 
 function App() {
@@ -31,6 +33,8 @@ function App() {
           <Route path='/admin/films' element={<AdminFilms />} />
           <Route path='admin/films/toevoegen' element={<AdminFilmsToevoegen />} />
           <Route path='/admin/films/1' element={<AdminFilmsAanpassen />} />
+          <Route path='/admin/instellingen' element={<AdminInstellingen />} />
+          <Route path='/admin/kalender' element={<AdminKalender />} />
 
           <Route path="/user/instellingen" element={<UserInstellingen />} />
         </Routes>

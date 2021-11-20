@@ -2,6 +2,12 @@ import React from "react";
 import SidebarAdmin from "../components/SidebarAdmin";
 import { Link } from "react-router-dom";
 
+var today = new Date();
+
+function capitalize(string){
+  return string.charAt(0).toUpperCase() + string.slice(1);
+}
+
 export const AdminDashboard = () => {
   return (
     <div className="App font-bold">
@@ -10,7 +16,7 @@ export const AdminDashboard = () => {
         <div class="border-t-2 border-gray-300 flex flex-wrap">
           <SidebarAdmin />
           <div class="mt-2 ml-20 pr-20 float-right w-auto h-auto">
-            <h1 class="text-center">Maandag 1/11</h1>
+            <h1 class="text-center">{capitalize(today.toLocaleDateString('nl-NL', {weekday: "long"})) + '\t' +today.getDate() + '/' + (today.getMonth() + 1)}</h1>
             <div class="grid grid-cols-4 gap-2 place-content-start mt-10 overflow-auto no-scroll h-96 w-auto">
             <div class="ml-20 mb-5">
             <Link to="/film">  <img
