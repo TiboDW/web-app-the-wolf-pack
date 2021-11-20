@@ -25,7 +25,7 @@ function App() {
           <Route path='/verwacht' element={<WordtVerwacht />} />
           <Route path='/contact' element={<Contact />} />
 
-          <Route path='/film' element={<Film />} />
+          <Route path='/film/*' element={<Film />} />
 
           <Route path='/admin/dashboard' element={<AdminDashboard />} />
           <Route path='/admin/films' element={<AdminFilms />} />

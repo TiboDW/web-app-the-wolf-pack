@@ -1,6 +1,10 @@
-import React from "react";
+import React, {useEffect} from "react";
+import {useLocation} from "react-router-dom";
 
 export const Film = () => {
+  const location = useLocation();
+  const id = location.pathname.split("/")[2];
+   
   return (
     <div class="App">
       <div class="container mx-auto px-6 mt-16 text-left text-color-footer">
