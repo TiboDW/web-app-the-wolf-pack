@@ -7,3 +7,8 @@ export async function getAllMovies() {
     return movies;
 }
 
+export async function getMovieById(id) {
+    const response = await fetch(`http://localhost:${port}/movies/${id}`);
+    const movie = await response.json();
+    return movie;
+}

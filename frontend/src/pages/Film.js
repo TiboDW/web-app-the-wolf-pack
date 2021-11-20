@@ -1,97 +1,69 @@
-import React, {useEffect} from "react";
+import React, {useEffect, useState} from "react";
+import { getMovieById } from "../api/movies";
 import {useLocation} from "react-router-dom";
+import Vertoning from "../components/Vertoning";
 
 export const Film = () => {
   const location = useLocation();
   const id = location.pathname.split("/")[2];
-   
+
+  const [movie, setMovie] = useState(undefined);
+
+  useEffect(() => {
+    getMovieById(id).then(movie => setMovie(movie));
+  }, [id]);
+
   return (
-    <div class="App">
+    <>
+    { movie && <div class="App flex-grow">
       <div class="container mx-auto px-6 mt-16 text-left text-color-footer">
         Film
         <div class=" border-t-2 border-gray-300 flex flex-wrap">
-        <div class="grid grid-cols-4 gap-2 place-content-start mt-10 overflow-auto no-scroll h-96 w-auto">
+        <div class="grid grid-cols-4 gap-2 place-content-start mt-10 overflow-auto w-auto">
             <div class="font-bold">
               <img
                 class="h-72 w-auto"
-                src="/images/Venom2.jpg"
+                src={movie.img_url}
                 alt="Workflow"
                 height="20%"
                 width="20%"
               />
             </div>
-            <div class="ml-1 font-bold">
-            <p class="">Venom: Let there be carnage</p>
+            <div class="ml-1 font-extrabold">
+            <p class="text-black"> {movie.titel}</p>
               <br />
-              <p class="">
-                Regisseur:
+              <p class="text-black font-bold">
+                Regisseur: <span class="ml-5 font-normal"> {movie.regisseur} </span>
               </p>
-              <p class="">
-                Cast:
+              <p class="text-black font-bold">
+                Cast: <span class="ml-5 font-normal"> {movie.hoofdrollen.join(", ")} </span>
               </p>
-              <p class="">
-                Genre:
+              <p class="text-black font-bold">
+                Release date: <span class="ml-5 font-normal"> {movie.release_datum} </span>
               </p>
-              <p class="">
-                Duur:
+              <p class="text-black font-bold">
+                Duur: <span class="ml-5 font-normal"> {movie.duur} </span>
               </p>
-              <br />
-              <p class="">
-                Beschrijving:
+              <p class="text-black font-bold">
+                Beschrijving: <span class="ml-5 font-normal"> {movie.description} </span>
               </p>
             </div>
 
             <div class="ml-32 font-bold">
-            <p class="">Tickets</p>
-              <br />
-              <p>
-                1/11:
-                <button class="ml-2 shadow font-bold py-2 px-4 rounded hover:bg-gray-50">19:00</button>
-              </p>
-              <br />
-              <p>
-                2/11:
-                <button class="ml-2 shadow font-bold py-2 px-4 rounded hover:bg-gray-50">19:00</button>
-              </p>
-              <br />
-              <p>
-                3/11:
-                <button class="ml-2 shadow font-bold py-2 px-4 rounded hover:bg-gray-50">19:00</button>
-              </p>
-              <br />
-              <p>
-                4/11:
-                <button class="ml-2 shadow font-bold py-2 px-4 rounded hover:bg-gray-50">19:00</button>
-              </p>
-              <br />
-              <p>
-                5/11:
-                <button class="ml-2 shadow font-bold py-2 px-4 rounded hover:bg-gray-50">19:00</button>
-                <button class="ml-2 shadow font-bold py-2 px-4 rounded hover:bg-gray-50">21:00</button>
-              </p>
-              <br />
+            <p class="text-black font-extrabold">Tickets</p>
+               {
+                  movie.vertoningen.map(vertoning => <Vertoning vertoning={vertoning} />)
+               }
             </div>
 
-            <div class="font-bold">
-              <br />
-              <br />
-              <p>
-                6/11:
-                <button class="ml-2 shadow font-bold py-2 px-4 rounded hover:bg-gray-50">19:00</button>
-                <button class="ml-2 shadow font-bold py-2 px-4 rounded hover:bg-gray-50">21:00</button>
-              </p>
-              <br />
-              <p>
-                7/11:
-                <button class="ml-2 shadow font-bold py-2 px-4 rounded hover:bg-gray-50">16:00</button>
-                <button class="ml-2 shadow font-bold py-2 px-4 rounded hover:bg-gray-50">19:00</button>
-                <button class="ml-2 shadow font-bold py-2 px-4 rounded hover:bg-gray-50">21:00</button>
-              </p>
-            </div>
+           
           </div>
         </div>
       </div>
     </div>
+    }
+    </>
   );
-};
+}
+
 export default Film;

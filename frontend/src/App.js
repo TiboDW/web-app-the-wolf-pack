@@ -17,7 +17,7 @@ import AdminFilmsToevoegen from './pages/AdminFilmsToevoegen';
 function App() {
   return (
     <Router>
-      <div className="App">
+      <div className="App flex flex-col min-h-screen">
         <Nav />
         <Routes>
           <Route path='/' element={<Home />} />
@@ -25,7 +25,7 @@ function App() {
           <Route path='/verwacht' element={<WordtVerwacht />} />
           <Route path='/contact' element={<Contact />} />
 
-          <Route path='/film/*' element={<Film />} />
+          <Route path='/movies/*' element={<Film />} />
 
           <Route path='/admin/dashboard' element={<AdminDashboard />} />
           <Route path='/admin/films' element={<AdminFilms />} />
