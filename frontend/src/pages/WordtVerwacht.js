@@ -36,7 +36,7 @@ export const WordtVerwacht = () => {
                 height="20%"
                 width="20%"
               /></Link>
-                <p class="w-44 truncate">Venom: Let there be carnage</p>
+                <p className="w-44 truncate">Venom: Let there be carnage</p>
               </div>
               <div class="ml-20 mb-5">
               <Link to="/film"><img
