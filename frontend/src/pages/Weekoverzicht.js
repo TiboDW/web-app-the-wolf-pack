@@ -1,6 +1,19 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
+let date = new Date 
+let week = []
+
+for (let i = 1; i <= 7; i++) {
+  let day = date.getDate() - date.getDay() + i 
+  
+  week.push(day + '/' + (date.getMonth() + 1))
+}
+
+function capitalize(string){
+  return string.charAt(0).toUpperCase() + string.slice(1);
+}
+
 export const Weekoverzicht = () => {
   return (
     <div className="App font-bold">
@@ -12,43 +25,43 @@ export const Weekoverzicht = () => {
               class="shadow focus:shadow-outline focus:outline-none bg-gray-50 text-color-label font-bold py-2 px-4 rounded ml-2"
               type="button" aria-current="page"
             >
-              Maandag 1/11
+             Maandag {week[0]}
             </button>
             <button
               class="shadow focus:shadow-outline focus:outline-none hover:bg-gray-50 text-color-label font-bold py-2 px-4 rounded  ml-2"
               type="button"
             >
-              Dinsdag 1/11
+              Dinsdag {week[1]}
             </button>
             <button
               class="shadow focus:shadow-outline focus:outline-none hover:bg-gray-50 text-color-label font-bold py-2 px-4 rounded  ml-2"
               type="button"
             >
-              Woensdag 1/11
+              Woensdag {week[2]}
             </button>
             <button
               class="shadow focus:shadow-outline focus:outline-none hover:bg-gray-50 text-color-label font-bold py-2 px-4 rounded  ml-2"
               type="button"
             >
-              Donderdag 1/11
+              Donderdag {week[3]}
             </button>
             <button
               class="shadow focus:shadow-outline focus:outline-none hover:bg-gray-50 text-color-label font-bold py-2 px-4 rounded  ml-2"
               type="button"
             >
-              Vrijdag 1/11
+              Vrijdag {week[4]}
             </button>
             <button
               class="shadow focus:shadow-outline focus:outline-none hover:bg-gray-50 text-color-label font-bold py-2 px-4 rounded  ml-2"
               type="button"
             >
-              Zaterdag 1/11
+              Zaterdag {week[5]}
             </button>
             <button
               class="shadow focus:shadow-outline focus:outline-none hover:bg-gray-50 text-color-label font-bold py-2 px-4 rounded  ml-2"
               type="button"
             >
-              Zondag 1/11
+              Zondag {week[6]}
             </button>
           </div>
           <div class="grid grid-cols-2 gap-2 place-content-start mt-10 overflow-auto no-scroll h-96 w-auto">

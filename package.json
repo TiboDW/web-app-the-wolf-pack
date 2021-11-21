@@ -1,8 +1,7 @@
 {
-  "name": "web-app-the-wolf-pack",
-  "version": "1.0.0",
-  "description": "*Describe how this web app will (eventually) earn money or make the world a better place*",
-  "main": "index.js",
+  "name": "cinema-focus",
+  "version": "0.1.0",
+  "private": true,
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node ./app.js"
