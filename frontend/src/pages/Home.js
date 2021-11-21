@@ -12,16 +12,11 @@ export const Home = () => {
 
 
   return (
-    <div className="App font-bold flex-grow">
-      <div class="container mx-auto px-6 mt-16 text-left text-color-footer">
-        Home
-        <div class="border-t-2 border-gray-300 flex flex-col items-left h-auto w-auto">
-          <div class="grid grid-cols-4 gap-2 place-content-start mt-10  overflow-auto w-auto">
-            {
-              movies.map(movie => <Movie movie={movie} />)
-            }
-          </div>
-        </div>
+    <div className="App font-bold flex-grow mb-3 text-color-footer">
+      <div class="grid grid-cols-4 gap-2 place-content-start mt-10  overflow-auto w-auto">
+        {
+          movies.map(movie => <Movie movie={movie} key={movie._id}/>)
+        }
       </div>
     </div>
   );

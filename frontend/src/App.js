@@ -1,5 +1,5 @@
 import './App.css';
-import {BrowserRouter as Router, Route, Routes} from 'react-router-dom';
+import { Route, Routes} from 'react-router-dom';
 import Nav from './components/Nav';
 import Home from './pages/Home';
 import WordtVerwacht from './pages/WordtVerwacht';
@@ -15,8 +15,8 @@ import AdminFilmsToevoegen from './pages/AdminFilmsToevoegen';
 
 
 function App() {
+
   return (
-    <Router>
       <div className="App flex flex-col min-h-screen">
         <Nav />
         <Routes>
@@ -36,7 +36,6 @@ function App() {
         </Routes>
         <Footer />
       </div>
-    </Router>
   );
 }
 

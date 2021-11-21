@@ -12,11 +12,16 @@ const jwtAuthz = require('express-jwt-authz');
 const jwt = require('express-jwt');
 const jwks = require('jwks-rsa');
 
+const corsOptions = {
+    origin: 'http://localhost:3000',
+    optionsSuccessStatus: 200
+  }
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(morgan('dev'));
 app.use(helmet());
-app.use(cors());
+app.use(cors(corsOptions));
 
 const checkToken = jwt({
     secret: jwks.expressJwtSecret({
@@ -37,16 +42,11 @@ const checkForAdminPermissions = jwtAuthz(['read:movies', 'create:movies', 'upda
 
 mongoose.connect(process.env.MONGODB_URI, {useNewUrlParser: true, useUnifiedTopology: true})
         .then(db => {
-            Movie.find({}).then((res) => {
-                if (res.length === 0) {
-                    movies.forEach((movie) => {
-                        movie.save().then(res => console.log("Movie is saved"));
-                    });
-                }
-                else {
-                    console.log("Database is not empty");
-                    console.log(`${res.length} documents found`);
-                }
+            // remove all records from the db
+            Movie.deleteMany().then(() => {
+                movies.forEach((movie) => {
+                    movie.save().then(res => console.log("Movie is saved"));
+                });
             });
         })
         .then(res => app.listen(port, () => console.log(`Listening on port ${port}`)))

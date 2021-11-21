@@ -15,10 +15,9 @@ export const Film = () => {
 
   return (
     <>
-    { movie && <div class="App flex-grow">
+    { movie && <div class="App flex-grow mb-5">
       <div class="container mx-auto px-6 mt-16 text-left text-color-footer">
-        Film
-        <div class=" border-t-2 border-gray-300 flex flex-wrap">
+        <div class="border-gray-300 flex flex-wrap">
         <div class="grid grid-cols-4 gap-2 place-content-start mt-10 overflow-auto w-auto">
             <div class="font-bold">
               <img
@@ -54,9 +53,7 @@ export const Film = () => {
                {
                   movie.vertoningen.map(vertoning => <Vertoning vertoning={vertoning} />)
                }
-            </div>
-
-           
+            </div>     
           </div>
         </div>
       </div>
