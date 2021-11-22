@@ -29,7 +29,8 @@ const movie1 = new Movie({
             uur: "20:00",
             zaal: "1"
         },
-    ]
+    ],
+    isReleased: true
 });
 
 const movie2 = new Movie({
@@ -61,7 +62,8 @@ const movie2 = new Movie({
             uur: "20:00",
             zaal: "2"
         },
-    ]
+    ],
+    isReleased: true
 });
 
 const movie3 = new Movie({
@@ -93,7 +95,8 @@ const movie3 = new Movie({
             uur: "17:00",
             zaal: "2"
         },
-    ]
+    ],
+    isReleased: true
 });
 
 const movie4 = new Movie({
@@ -125,7 +128,8 @@ const movie4 = new Movie({
             uur: "17:00",
             zaal: "1"
         },
-    ]
+    ],
+    isReleased: true
 });
 
 const movie5 = new Movie({
@@ -157,9 +161,69 @@ const movie5 = new Movie({
             uur: "20:00",
             zaal: "3"
         },
-    ]
+    ],
+    isReleased: true
 });
 
+const movie6 = new Movie({
+    titel: 'WEST SIDE STORY',
+    regisseur: 'Steven Spielberg',
+    hoofdrollen: ['Ansel Elgort','Rachel Zegler' ,'Ariana DeBose'],
+    duur: "/",
+    release_datum: "8 december 2021",
+    description: "Nog geen samenvatting gekend.",
+    isReleased: false,
+    img_url: "http://www.cinemafocus.be/west%20side%20story.jpg",
+    trailer_url: "https://www.youtube.com/watch?v=A5GJLwWiYSg",
+});
+
+const movie7 = new Movie({
+    titel: 'SPIDER-MAN: NO WAY HOME',
+    regisseur: 'Jon Watts',
+    release_datum: '15 december 2021',
+    duur: "/",
+    hoofdrollen: ['Tom Holland', 'Benedict Cumberbatch', 'Jamie Foxx', 'Angourie Rice', 'Zendaya'],
+    isReleased : false,
+    description: "Nog geen samenvatting gekend.",
+    img_url: 'http://www.cinemafocus.be/spider-man%20no%20way%20home.jpg',
+    trailer_url: 'https://www.youtube.com/embed/041ONYrWQpA'
+});
+
+const movie8 = new Movie({
+    titel: "THE KING'S MAN: THE BEGINNING",
+    regisseur: 'Matthew Vaugh',
+    release_datum: '8 december 2021',
+    hoofdrollen: ['Ralph Fiennes'],
+    isReleased : false,
+    duur: "/",
+    description: "Een verzameling van 's werelds ergste tirannen en criminele meesterbreinen verzamelt zich om een oorlog uit te zetten die miljoenen zal vernietigen. De hoop is gevestigd op één man die tegen de tijd zal moeten racen om ze te stoppen. Het leidt tot de origine van de eerste onafhankelijke inlichtingendienst, 'The King's Man'",
+    img_url: 'http://www.cinemafocus.be/kingsman%203.gif',
+    trailer_url: 'https://www.youtube.com/embed/xYPDS5k_kTI'
+});
+
+const movie9 = new Movie({
+    titel: "THE MATRIX RESSURECTIONS",
+    regisseur: 'Lana Wachowski',
+    release_datum: '22 december 2021',
+    hoofdrollen: ["Keanu Reeves", "Jada Pinkett Smith", "Carrie-Anne Moss"],
+    isReleased : false,
+    duur: "/",
+    description: "“The Matrix Resurrections”, van grensverleggend filmmaker Lana Wachowski, is de langverwachte vierde film in een franchise die het scifi-genre voorgoed heeft veranderd. In deze nieuwe film keren Keanu Reeves en Carrie-Anne Moss terug als hun beroemde personages Neo en Trinity.",
+    img_url: 'http://www.cinemafocus.be/the%20matrix%20ressurections.jpg',
+    trailer_url: 'https://www.youtube.com/watch?v=9ix7TUGVYIo'
+});
+
+const movie10 = new Movie({
+    titel: "DEATH ON THE NILE",
+    regisseur: 'Kenneth Branagh',
+    release_datum: '02 februari 2022',
+    hoofdrollen: ["Armie Hammer", "Kenneth Branagh", "Annette Bening", "Gal Gadot"],
+    isReleased : false,
+    duur: "/",
+    description: "Hercule Poirot’s Egyptische avontuur begint op een glamoreuze cruiseboot op de Nijl. De luxe trip verandert echter al snel in een angstaanjagende jacht op een moordenaar als een huwelijksreis wordt opgeschrikt door agressieve moorden. Het is het sinistere verhaal van obsessieve liefde en de moordende consequenties hiervan en speelt zich af in een episch landschap van woestijn en Koninklijke pyramides van Egypte. De film volgt een groep voortreffelijk gekleedde reizigers met genoeg schokkende wendingen die het publiek zullen verrassen tot aan de laatste ontknoping.",
+    img_url: 'http://www.cinemafocus.be/death%20on%20the%20nile.jpg',
+    trailer_url: 'https://www.youtube.com/watch?v=JM1U-Whb-P0'
+});
 
 function addDays(date, days) {
     var result = new Date(date);
@@ -176,6 +240,6 @@ function getLocalDateString(date) {
     });
 }
 
-const movies = [movie1, movie2, movie3, movie4, movie5];
+const movies = [movie1, movie2, movie3, movie4, movie5, movie6, movie7, movie8, movie9, movie10];
 
 module.exports.movies = movies;

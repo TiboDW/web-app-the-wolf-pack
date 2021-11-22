@@ -18,7 +18,7 @@ const MovieSchema = new mongoose.Schema({
   },
   land: {
     type: String,
-    required: true,
+    required: false,
   },
   release_datum: {
     type: String,
@@ -42,8 +42,12 @@ const MovieSchema = new mongoose.Schema({
   },
   vertoningen: {
     type: [Object],
-    required: true,
+    required: false,
   },
+  isReleased:{
+    type: Boolean,
+    required: true,
+  }
 });
 
 const Movie = mongoose.model("Movie", MovieSchema);

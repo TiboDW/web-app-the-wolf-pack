@@ -5,7 +5,7 @@ import { useAuth0 } from "@auth0/auth0-react";
 
 const Login = () => {
 
-    const { loginWithRedirect, isAuthenticated, user } = useAuth0();
+    const { loginWithRedirect, isAuthenticated, user, logout } = useAuth0();
     const [toggle, setToggle] = useState(false);
 
     if (!isAuthenticated) {
@@ -38,7 +38,7 @@ const Login = () => {
                     </div>
                     <div className={toggle ? "origin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 divide-y divide-gray-100 focus:outline-none" : "hidden"} role="menu" aria-orientation="vertical" aria-labelledby="menu-button" tabindex="-1">
                         <div class="py-3 px-2 text-lg text-color-footer" role="none">
-                            <button> Sign out </button>
+                            <button onClick={() => logout()}> Sign out </button>
                         </div>
                     </div>
                 </div>

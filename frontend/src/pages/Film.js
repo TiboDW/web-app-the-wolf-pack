@@ -48,12 +48,15 @@ export const Film = () => {
               </p>
             </div>
 
-            <div class="ml-32 font-bold">
-            <p class="text-black font-extrabold">Tickets</p>
-               {
-                  movie.vertoningen.map(vertoning => <Vertoning vertoning={vertoning} />)
-               }
-            </div>     
+            {
+              movie.vertoningen &&  movie.vertoningen.length > 0 && 
+              <div class="ml-32 font-bold">
+                  <p class="text-black font-extrabold">Tickets</p>
+                  {
+                    movie.vertoningen.map(vertoning => <Vertoning vertoning={vertoning} />)
+                  }
+              </div> 
+              }  
           </div>
         </div>
       </div>

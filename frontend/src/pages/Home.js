@@ -15,7 +15,7 @@ export const Home = () => {
     <div className="App font-bold flex-grow mb-3 text-color-footer">
       <div class="grid grid-cols-4 gap-2 place-content-start mt-10  overflow-auto w-auto">
         {
-          movies.map(movie => <Movie movie={movie} key={movie._id}/>)
+          movies.filter(movie => movie.isReleased).map(movie => <Movie movie={movie} key={movie._id}/>)
         }
       </div>
     </div>

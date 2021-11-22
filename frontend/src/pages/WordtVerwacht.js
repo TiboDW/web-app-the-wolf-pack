@@ -1,83 +1,23 @@
-import React from 'react'
-import { Link } from 'react-router-dom';
+import React, {useState, useEffect} from 'react';
+import { getAllMovies } from '../api/movies';
+import Movie from '../components/Movie';
 
 export const WordtVerwacht = () => {
+
+  const [movies, setMovies] = useState([]);
+
+  useEffect(() => {
+    getAllMovies().then(movies => setMovies(movies));
+  }, [movies]);
+
     return (
-        <div className="App font-bold">
+        <div className="App font-bold flex-grow">
         <div class="container mx-auto px-6 mt-16 text-left text-color-footer">
-          Wordt verwacht
-          <div class=" border-t-2 border-gray-300 flex flex-col items-left">
-            <div class="grid grid-cols-4 gap-2 place-content-start mt-10 overflow-auto no-scroll h-96 w-auto">
-              <div class="ml-20 mb-5">
-              <Link to="/film"><img
-                class="h-72 w-auto float-left"
-                src="/images/Venom2.jpg"
-                alt="Workflow"
-                height="20%"
-                width="20%"
-              /></Link>
-                <p class="w-44 truncate">Venom: Let there be carnage</p>
-              </div>
-              <div class="ml-20 mb-5">
-              <Link to="/film"><img
-                class="h-72 w-auto float-left"
-                src="/images/Venom2.jpg"
-                alt="Workflow"
-                height="20%"
-                width="20%"
-              /></Link>
-                <p class="w-44 truncate">Venom: Let there be carnage</p>
-              </div>
-              <div class="ml-20 mb-5">
-              <Link to="/film"><img
-                class="h-72 w-auto float-left"
-                src="/images/Venom2.jpg"
-                alt="Workflow"
-                height="20%"
-                width="20%"
-              /></Link>
-                <p className="w-44 truncate">Venom: Let there be carnage</p>
-              </div>
-              <div class="ml-20 mb-5">
-              <Link to="/film"><img
-                class="h-72 w-auto float-left"
-                src="/images/Venom2.jpg"
-                alt="Workflow"
-                height="20%"
-                width="20%"
-              /></Link>
-                <p class="w-44 truncate">Venom: Let there be carnage</p>
-              </div>
-              <div class="ml-20 mb-5">
-              <Link to="/film"><img
-                class="h-72 w-auto float-left"
-                src="/images/Venom2.jpg"
-                alt="Workflow"
-                height="20%"
-                width="20%"
-              /></Link>
-                <p class="w-44 truncate">Venom: Let there be carnage</p>
-              </div>
-              <div class="ml-20 mb-5">
-              <Link to="/film"><img
-                class="h-72 w-auto float-left"
-                src="/images/Venom2.jpg"
-                alt="Workflow"
-                height="20%"
-                width="20%"
-              /></Link>
-                <p class="w-44 truncate">Venom: Let there be carnage</p>
-              </div>
-              <div class="ml-20 mb-5">
-              <Link to="/film"><img
-                class="h-72 w-auto float-left"
-                src="/images/Venom2.jpg"
-                alt="Workflow"
-                height="20%"
-                width="20%"
-              /></Link>
-                <p class="w-44 truncate">Venom: Let there be carnage</p>
-              </div>
+          <div class="border-gray-300 flex flex-col items-left">
+            <div class="grid grid-cols-4 gap-2 place-content-start mt-10 overflow-auto w-auto">
+              {
+                movies.filter(movie => movie.isReleased === false).map(movie => <Movie movie={movie} key={movie._id}/>)
+              }
             </div>
           </div>
         </div>
