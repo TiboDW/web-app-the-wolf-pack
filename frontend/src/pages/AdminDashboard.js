@@ -1,103 +1,43 @@
-import React from "react";
+import React, {useEffect , useState} from "react";
 import SidebarAdmin from "../components/SidebarAdmin";
-import { Link } from "react-router-dom";
+import Movie from "../components/Movie";
+import {getAllMovies} from "../api/movies.js";
 
-var today = new Date();
+var today = new Date(Date.now());
 
 function capitalize(string){
   return string.charAt(0).toUpperCase() + string.slice(1);
 }
 
+function getLocalDateString(date){
+  return date.toLocaleDateString("nl-BE", {
+    day: "numeric",
+    month: "long",
+    year: "numeric",
+    weekday: 'long'
+});
+}
+
 export const AdminDashboard = () => {
+
+  const [movies, setMovies] = useState([]);
+
+  useEffect(() => {
+    getAllMovies().then(movies => setMovies(movies));
+  }, []);
+
   return (
     <div className="App font-bold flex-grow">
-      <div class="container mx-auto px-6 mt-16 text-left text-color-footer">
+      <div class="container mx-auto px-2 mt-16 text-left text-color-footer">
           <div class=" border-gray-300 flex flex-wrap">
           <SidebarAdmin />
           <div class="mt-2 ml-20 pr-20 float-right w-auto h-auto">
             <h1 class="text-center">{capitalize(today.toLocaleDateString('nl-NL', {weekday: "long"})) + '\t' +today.getDate() + '/' + (today.getMonth() + 1)}</h1>
             <div class="grid grid-cols-4 gap-2 place-content-start mt-10 overflow-auto w-auto">
-            <div class="ml-20 mb-5">
-            <Link to="/film">  <img
-                class="h-72 w-auto"
-                src="/images/Venom2.jpg"
-                alt="Workflow"
-                height="20%"
-                width="20%"
-              /></Link>
-              <p class="w-44 truncate">Venom: Let there be carnage</p>
+                {
+                  movies.filter(movie => movie.vertoningen.filter(vertoning => vertoning.datum === getLocalDateString(new Date(today)).split(" ").slice(1).join(" ")).length > 0).map(movie => <Movie movie={movie} key={movie._id}/>)
+                }
             </div>
-            <div class="ml-20 mb-5">
-            <Link to="/film">  <img
-                class="h-72 w-auto"
-                src="/images/Venom2.jpg"
-                alt="Workflow"
-                height="20%"
-                width="20%"
-              /></Link>
-              <p class="w-44 truncate">Venom: Let there be carnage</p>
-            </div>
-            <div class="ml-20 mb-5">
-            <Link to="/film">  <img
-                class="h-72 w-auto"
-                src="/images/Venom2.jpg"
-                alt="Workflow"
-                height="20%"
-                width="20%"
-              /></Link>
-              <p class="w-44 truncate">Venom: Let there be carnage</p>
-            </div>
-            <div class="ml-20 mb-5">
-            <Link to="/film">  <img
-                class="h-72 w-auto"
-                src="/images/Venom2.jpg"
-                alt="Workflow"
-                height="20%"
-                width="20%"
-              /></Link>
-              <p class="w-44 truncate">Venom: Let there be carnage</p>
-            </div>
-            <div class="ml-20 mb-5">
-            <Link to="/film">  <img
-                class="h-72 w-auto"
-                src="/images/Venom2.jpg"
-                alt="Workflow"
-                height="20%"
-                width="20%"
-              /></Link>
-              <p class="w-44 truncate">Venom: Let there be carnage</p>
-            </div>
-            <div class="ml-20 mb-5">
-            <Link to="/film">  <img
-                class="h-72 w-auto"
-                src="/images/Venom2.jpg"
-                alt="Workflow"
-                height="20%"
-                width="20%"
-              /></Link>
-              <p class="w-44 truncate">Venom: Let there be carnage</p>
-            </div>
-            <div class="ml-20 mb-5">
-            <Link to="/film">  <img
-                class="h-72 w-auto"
-                src="/images/Venom2.jpg"
-                alt="Workflow"
-                height="20%"
-                width="20%"
-              /></Link>
-              <p class="w-44 truncate">Venom: Let there be carnage</p>
-            </div>
-            <div class="ml-20 mb-5">
-            <Link to="/film">  <img
-                class="h-72 w-auto"
-                src="/images/Venom2.jpg"
-                alt="Workflow"
-                height="20%"
-                width="20%"
-              /></Link>
-              <p class="w-44 truncate">Venom: Let there be carnage</p>
-            </div>
-          </div>
           </div>
         </div>
       </div>

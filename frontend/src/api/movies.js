@@ -12,3 +12,13 @@ export async function getMovieById(id) {
     const movie = await response.json();
     return movie;
 }
+
+export async function deleteMovieByid(id, accessToken) {
+    const response = await fetch(`http://localhost:${port}/movies/${id}`, {
+        method: 'DELETE',
+        headers: {
+            'Authorization': `Bearer ${accessToken}`
+        }
+    });
+    return response.status;
+}
