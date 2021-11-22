@@ -4,11 +4,10 @@ import SidebarAdmin from "../components/SidebarAdmin";
 export const AdminFilmsToevoegen = () => {
   return (
     <div className="App font-bold">
-      <div class="container mx-auto px-6 mt-16 text-left text-color-footer">
-        Films
-        <div class="border-t-2 border-gray-300 flex flex-wrap">
+      <div class="container mx-auto px-6 mt-16 text-left text-color-footer flex-grow">
+        <div class="border-gray-300 flex flex-wrap">
           <SidebarAdmin />
-          <div class="grid grid-cols-3 gap-2 place-content-start mt-5 overflow-auto no-scroll h-96 w-auto">
+          <div class="grid grid-cols-3 gap-2 place-content-start mt-5 overflow-auto w-auto">
             <div class="ml-20">
               <img
                 class="h-72 w-auto"

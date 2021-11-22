@@ -24,7 +24,7 @@ const Login = () => {
     }
     else {
         return (
-                <div class="relative inline-block text-left">
+                <div class="relative inline-block text-left z-10">
                     <div>
                         <button type="button" onClick={() => setToggle(!toggle)} className="inline-flex justify-center w-full rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none" id="menu-button" aria-expanded="true" aria-haspopup="true">
                             <div class="flex flex-row items-center">
@@ -39,6 +39,9 @@ const Login = () => {
                     <div className={toggle ? "origin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 divide-y divide-gray-100 focus:outline-none" : "hidden"} role="menu" aria-orientation="vertical" aria-labelledby="menu-button" tabindex="-1">
                         <div class="py-3 px-2 text-lg text-color-footer" role="none">
                             <button onClick={() => logout()}> Sign out </button>
+                        </div>
+                        <div class="py-3 px-2 text-lg text-color-footer" role="none">
+                            <a href="/admin/dashboard"> Dashboard </a>
                         </div>
                     </div>
                 </div>

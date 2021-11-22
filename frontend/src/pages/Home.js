@@ -8,7 +8,7 @@ export const Home = () => {
 
   useEffect(() => {
     getAllMovies().then(movies => setMovies(movies));
-  }, [movies]);
+  }, []);
 
 
   return (

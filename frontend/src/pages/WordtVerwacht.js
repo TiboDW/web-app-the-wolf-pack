@@ -8,7 +8,7 @@ export const WordtVerwacht = () => {
 
   useEffect(() => {
     getAllMovies().then(movies => setMovies(movies));
-  }, [movies]);
+  }, []);
 
     return (
         <div className="App font-bold flex-grow">
