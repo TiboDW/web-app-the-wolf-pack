@@ -23,7 +23,7 @@ import NotLoggedIn from './components/NotLoggedIn';
 function App() {
 
   const [authorized, setAuthorized] = useState(false);
-  const {getAccessTokenSilently, isAuthenticated}  = useAuth0();
+  const {getAccessTokenSilently, isAuthenticated, isLoading}  = useAuth0();
 
  
 
@@ -59,7 +59,13 @@ function App() {
             <Route path='/admin/films/1' element={<AdminFilmsAanpassen />} />
             <Route path='/admin/instellingen' element={<AdminInstellingen />} />
             <Route path='/admin/kalender' element={<AdminKalender />} /> </> 
-            : isAuthenticated ? <> <Route path='/admin/dashboard' element={<Unauthorized />} />
+            : isLoading ? <> <Route path='/admin/dashboard' element={<div> </div>} />
+            <Route path='/admin/films' element={<div> </div>} />
+            <Route path='/admin/films/toevoegen' element={<div> </div>} />
+            <Route path='/admin/films/1' element={<div> </div>} />
+            <Route path='/admin/instellingen' element={<div> </div>} />
+            <Route path='/admin/kalender' element={<div> </div>} />  </> 
+             : isAuthenticated ? <> <Route path='/admin/dashboard' element={<Unauthorized />} />
             <Route path='/admin/films' element={<Unauthorized />} />
             <Route path='/admin/films/toevoegen' element={<Unauthorized />} />
             <Route path='/admin/films/1' element={<Unauthorized />} />
