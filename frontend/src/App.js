@@ -14,29 +14,54 @@ import UserInstellingen from './pages/UserInstellingen';
 import AdminFilmsToevoegen from './pages/AdminFilmsToevoegen';
 import AdminKalender from './pages/AdminKalender';
 import AdminInstellingen from './pages/AdminInstellingen';
-
+import Unauthorized from './components/Unauthorized';
+import React, {useState, useEffect} from 'react';
+import isAdmin from './Util.js';
+import {useAuth0} from '@auth0/auth0-react';
 
 function App() {
 
+  const [authorized, setAuthorized] = useState(false);
+  const {getAccessTokenSilently, isAuthenticated}  = useAuth0();
+
+ 
+
+  useEffect(() => {
+    const checkAutorized = async () => {
+      const token = await getAccessTokenSilently();
+      return await isAdmin(token);
+    }
+
+    async function checkAdmin () {
+      if (isAuthenticated){
+        const response = await checkAutorized();
+        setAuthorized(response);
+      }
+    };
+    checkAdmin();
+  },[setAuthorized, isAuthenticated, getAccessTokenSilently]);
+
   return (
       <div className="App flex flex-col min-h-screen">
-        <Nav />
+        <Nav authorized={authorized}/>
         <Routes>
           <Route path='/' element={<Home />} />
           <Route path='/weekoverzicht' element={<Weekoverzicht />} />
           <Route path='/verwacht' element={<WordtVerwacht />} />
           <Route path='/contact' element={<Contact />} />
-
           <Route path='/movies/*' element={<Film />} />
 
+          
           <Route path='/admin/dashboard' element={<AdminDashboard />} />
           <Route path='/admin/films' element={<AdminFilms />} />
-          <Route path='admin/films/toevoegen' element={<AdminFilmsToevoegen />} />
+          <Route path='/admin/films/toevoegen' element={<AdminFilmsToevoegen />} />
           <Route path='/admin/films/1' element={<AdminFilmsAanpassen />} />
           <Route path='/admin/instellingen' element={<AdminInstellingen />} />
           <Route path='/admin/kalender' element={<AdminKalender />} />
 
           <Route path="/user/instellingen" element={<UserInstellingen />} />
+
+          <Route path='/unauthorized' element={<Unauthorized />} />
         </Routes>
         <Footer />
       </div>

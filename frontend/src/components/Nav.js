@@ -2,7 +2,7 @@ import React from 'react';
 import Login from './Login';
 import {Link} from 'react-router-dom';
 
-export const Nav = () => {
+export const Nav = ({authorized}) => {
     return (
        
         <nav className="border-b-2 top-0 w-full">
@@ -44,7 +44,7 @@ export const Nav = () => {
                
                 <div className="ml-3 relative">
                   <div>
-                    <Login />
+                    <Login authorized={authorized}/>
                   </div>
                 </div>
               </div>

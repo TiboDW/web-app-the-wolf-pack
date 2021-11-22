@@ -22,3 +22,4 @@ export async function deleteMovieByid(id, accessToken) {
     });
     return response.status;
 }
+

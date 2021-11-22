@@ -3,7 +3,7 @@ import {FaUserAlt} from 'react-icons/fa';
 import { useAuth0 } from "@auth0/auth0-react";
 
 
-const Login = () => {
+const Login = ({authorized}) => {
 
     const { loginWithRedirect, isAuthenticated, user, logout } = useAuth0();
     const [toggle, setToggle] = useState(false);
@@ -40,9 +40,12 @@ const Login = () => {
                         <div class="py-3 px-2 text-lg text-color-footer" role="none">
                             <button onClick={() => logout()}> Sign out </button>
                         </div>
-                        <div class="py-3 px-2 text-lg text-color-footer" role="none">
-                            <a href="/admin/dashboard"> Dashboard </a>
-                        </div>
+                        {
+                            authorized && <div class="py-3 px-2 text-lg text-color-footer" role="none">
+                                                <a href="/admin/dashboard"> Dashboard </a>
+                                          </div>
+                        }
+                        
                     </div>
                 </div>
         )
