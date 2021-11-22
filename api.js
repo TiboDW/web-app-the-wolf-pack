@@ -23,6 +23,13 @@ app.use(morgan('dev'));
 app.use(helmet());
 app.use(cors(corsOptions));
 
+app.use((req, res, next) => {
+    res.format({
+        "application/json": () => next(),
+        default: () => res.status(406).end(),
+    });
+});
+
 const checkToken = jwt({
     secret: jwks.expressJwtSecret({
         cache: true,
@@ -95,6 +102,9 @@ app.put('/movies/:id',checkToken, checkForAdminPermissions, async(req,res, next)
         res.status(200).send(updatedMovie);
     }
     catch(err) {
+        err.status = 404;
+        err.name = "NotFoundError"
+        err.message = "Movie not found";
         next(err);
     }
 });

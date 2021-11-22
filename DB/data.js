@@ -173,7 +173,7 @@ const movie6 = new Movie({
     release_datum: "8 december 2021",
     description: "Nog geen samenvatting gekend.",
     isReleased: false,
-    img_url: "http://www.cinemafocus.be/west%20side%20story.jpg",
+    img_url: "https://kinepolis.be/nl/sites/kinepolis.be.nl/files/styles/kinepolis_filter_movie_poster/public/posters/WestSideStory_OV_poster_final.jpg",
     trailer_url: "https://www.youtube.com/watch?v=A5GJLwWiYSg",
 });
 
@@ -185,7 +185,7 @@ const movie7 = new Movie({
     hoofdrollen: ['Tom Holland', 'Benedict Cumberbatch', 'Jamie Foxx', 'Angourie Rice', 'Zendaya'],
     isReleased : false,
     description: "Nog geen samenvatting gekend.",
-    img_url: 'http://www.cinemafocus.be/spider-man%20no%20way%20home.jpg',
+    img_url: 'https://kinepolis.be/nl/sites/kinepolis.be.nl/files/styles/kinepolis_filter_movie_poster/public/posters/spiderman.jpg',
     trailer_url: 'https://www.youtube.com/embed/041ONYrWQpA'
 });
 
@@ -197,7 +197,7 @@ const movie8 = new Movie({
     isReleased : false,
     duur: "/",
     description: "Een verzameling van 's werelds ergste tirannen en criminele meesterbreinen verzamelt zich om een oorlog uit te zetten die miljoenen zal vernietigen. De hoop is gevestigd op één man die tegen de tijd zal moeten racen om ze te stoppen. Het leidt tot de origine van de eerste onafhankelijke inlichtingendienst, 'The King's Man'",
-    img_url: 'http://www.cinemafocus.be/kingsman%203.gif',
+    img_url: 'https://kinepolis.be/nl/sites/kinepolis.be.nl/files/styles/kinepolis_filter_movie_poster/public/posters/THE_KING_S_MAN_-_POSTER_NL.jpg?itok=h15F5rhJ',
     trailer_url: 'https://www.youtube.com/embed/xYPDS5k_kTI'
 });
 
@@ -209,7 +209,7 @@ const movie9 = new Movie({
     isReleased : false,
     duur: "/",
     description: "“The Matrix Resurrections”, van grensverleggend filmmaker Lana Wachowski, is de langverwachte vierde film in een franchise die het scifi-genre voorgoed heeft veranderd. In deze nieuwe film keren Keanu Reeves en Carrie-Anne Moss terug als hun beroemde personages Neo en Trinity.",
-    img_url: 'http://www.cinemafocus.be/the%20matrix%20ressurections.jpg',
+    img_url: 'https://kinepolis.be/nl/sites/kinepolis.be.nl/files/styles/kinepolis_filter_movie_poster/public/posters/Matrix4_FL.jpg',
     trailer_url: 'https://www.youtube.com/watch?v=9ix7TUGVYIo'
 });
 
@@ -221,7 +221,7 @@ const movie10 = new Movie({
     isReleased : false,
     duur: "/",
     description: "Hercule Poirot’s Egyptische avontuur begint op een glamoreuze cruiseboot op de Nijl. De luxe trip verandert echter al snel in een angstaanjagende jacht op een moordenaar als een huwelijksreis wordt opgeschrikt door agressieve moorden. Het is het sinistere verhaal van obsessieve liefde en de moordende consequenties hiervan en speelt zich af in een episch landschap van woestijn en Koninklijke pyramides van Egypte. De film volgt een groep voortreffelijk gekleedde reizigers met genoeg schokkende wendingen die het publiek zullen verrassen tot aan de laatste ontknoping.",
-    img_url: 'http://www.cinemafocus.be/death%20on%20the%20nile.jpg',
+    img_url: 'https://kinepolis.be/nl/sites/kinepolis.be.nl/files/styles/kinepolis_filter_movie_poster/public/posters/DEATH_ON_THE_NILE_-_POSTER_NL.jpg?itok=24O5eqnZ',
     trailer_url: 'https://www.youtube.com/watch?v=JM1U-Whb-P0'
 });
 
