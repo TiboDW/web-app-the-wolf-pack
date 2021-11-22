@@ -12,7 +12,6 @@ const AdminMovie = ({movie, setMovies}) => {
 
     const deleteMovie = async () => {
         const token = await getAccessTokenSilently();
-        console.log(token);
         const status = await deleteMovieByid(movie._id, token);
         if (status === 204){
           const movies = await getAllMovies();

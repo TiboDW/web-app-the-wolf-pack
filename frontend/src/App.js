@@ -18,6 +18,7 @@ import Unauthorized from './components/Unauthorized';
 import React, {useState, useEffect} from 'react';
 import isAdmin from './Util.js';
 import {useAuth0} from '@auth0/auth0-react';
+import NotLoggedIn from './components/NotLoggedIn';
 
 function App() {
 
@@ -51,17 +52,29 @@ function App() {
           <Route path='/contact' element={<Contact />} />
           <Route path='/movies/*' element={<Film />} />
 
-          
-          <Route path='/admin/dashboard' element={<AdminDashboard />} />
-          <Route path='/admin/films' element={<AdminFilms />} />
-          <Route path='/admin/films/toevoegen' element={<AdminFilmsToevoegen />} />
-          <Route path='/admin/films/1' element={<AdminFilmsAanpassen />} />
-          <Route path='/admin/instellingen' element={<AdminInstellingen />} />
-          <Route path='/admin/kalender' element={<AdminKalender />} />
+          {
+            authorized ? <> <Route path='/admin/dashboard' element={<AdminDashboard />} />
+            <Route path='/admin/films' element={<AdminFilms />} />
+            <Route path='/admin/films/toevoegen' element={<AdminFilmsToevoegen />} />
+            <Route path='/admin/films/1' element={<AdminFilmsAanpassen />} />
+            <Route path='/admin/instellingen' element={<AdminInstellingen />} />
+            <Route path='/admin/kalender' element={<AdminKalender />} /> </> 
+            : isAuthenticated ? <> <Route path='/admin/dashboard' element={<Unauthorized />} />
+            <Route path='/admin/films' element={<Unauthorized />} />
+            <Route path='/admin/films/toevoegen' element={<Unauthorized />} />
+            <Route path='/admin/films/1' element={<Unauthorized />} />
+            <Route path='/admin/instellingen' element={<Unauthorized />} />
+            <Route path='/admin/kalender' element={<Unauthorized />} /> </> 
+            : <> <Route path='/admin/dashboard' element={<NotLoggedIn />} />
+            <Route path='/admin/films' element={<NotLoggedIn />} />
+            <Route path='/admin/films/toevoegen' element={<NotLoggedIn />} />
+            <Route path='/admin/films/1' element={<NotLoggedIn />} />
+            <Route path='/admin/instellingen' element={<NotLoggedIn />} />
+            <Route path='/admin/kalender' element={<NotLoggedIn />} /> </>
+
+          }
 
           <Route path="/user/instellingen" element={<UserInstellingen />} />
-
-          <Route path='/unauthorized' element={<Unauthorized />} />
         </Routes>
         <Footer />
       </div>

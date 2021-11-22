@@ -4,7 +4,9 @@ import React from 'react';
 const Unauthorized = () => {
 
   return (
-      <p> Sorry you don't have the rights to access this page ! </p>
+      <div className="flex items-center justify-center mt-10">
+        <p className="text-2xl"> Sorry you don't have the rights to access this page ! </p>
+      </div>
   )
 }
 
