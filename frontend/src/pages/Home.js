@@ -13,7 +13,7 @@ export const Home = () => {
 
   return (
     <div className="App font-bold flex-grow mb-3 text-color-footer">
-      <div class="grid grid-cols-4 gap-2 place-content-start mt-10  overflow-auto w-auto">
+      <div className="grid grid-cols-4 gap-2 place-content-start mt-10 overflow-auto w-auto">
         {
           movies.filter(movie => movie.isReleased).map(movie => <Movie movie={movie} key={movie._id}/>)
         }

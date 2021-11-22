@@ -2,12 +2,11 @@ import React from "react";
 
 export const Contact = () => {
   return (
-    <div className="App font-bold">
-      <div class="container mx-auto px-6 mt-16 text-left text-color-footer">
-        Contacteer ons
-        <div class="border-t-2 border-gray-300 flex flex-col items-left">
+    <div className="App font-bold flex-grow mb-3 text-color-footer">
+      <div class="container mx-auto px-6 text-left text-color-footer">
+        <div class="flex flex-col items-left">
           <div class="space-around">
-            <div class="grid grid-rows-3 grid-flow-col gap-4 mt-2">
+            <div class="grid grid-rows-3 grid-flow-col gap-4 mt-10">
               <div class="col-span-3 row-span-3">
               <form class="w-full max-w-sm mt-5">
                 <div class="md:flex md:items-center mb-6">

@@ -12,16 +12,17 @@ export const WordtVerwacht = () => {
 
     return (
         <div className="App font-bold flex-grow">
-        <div class="container mx-auto px-6 mt-16 text-left text-color-footer">
-          <div class="border-gray-300 flex flex-col items-left">
-            <div class="grid grid-cols-4 gap-2 place-content-start mt-10 overflow-auto w-auto">
-              {
-                movies.filter(movie => movie.isReleased === false).map(movie => <Movie movie={movie} key={movie._id}/>)
-              }
-            </div>
+          <div class="container mx-auto px-6 mt-16 text-left text-color-footer">
+            <div class="border-gray-300 flex flex-col items-left">
+              <div class="grid grid-cols-4 gap-2 place-content-start mt-10 overflow-auto w-auto">
+                {
+                  movies.filter(movie => movie.isReleased === false).map(movie => <Movie movie={movie} key={movie._id}/>)
+                }
+              </div>
           </div>
         </div>
-      </div>
+       </div>
     )
 }
+
 export default WordtVerwacht;
