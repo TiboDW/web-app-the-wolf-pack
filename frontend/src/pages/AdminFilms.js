@@ -4,14 +4,11 @@ import { Link } from "react-router-dom";
 
 export const AdminFilms = () => {
   return (
-    <div className="App font-bold">
-      <div class="container mx-auto px-6 mt-16 text-left text-color-footer">
-        Films
-        <div class="border-t-2 border-gray-300 flex flex-wrap">
+    <div className="App font-bold flex flex-grow mb-3 text-color-footer">
           <SidebarAdmin />
-          <div class="mt-2 ml-20 pr-20 float-right w-auto h-auto">
-          <Link to="/admin/films/toevoegen" ><button class="shadow font-bold py-2 px-4 rounded hover:bg-gray-50 w-full text-center">Film toevoegen</button></Link>
-            <div class="grid grid-cols-4 gap-2 place-content-start mt-10 overflow-auto no-scroll h-96">
+          <div class="mt-2 ml-20 float-right w-auto h-auto">
+          <Link to="/admin/films/toevoegen" ><button class="shadow font-bold py-2 px-4 rounded hover:bg-gray-50 w-full text-center ml-10">Film toevoegen</button></Link>
+            <div class="grid grid-cols-4 gap-2 place-content-start mt-10 overflow-auto">
               <div class="ml-20 mb-5">
                 <img
                   class="h-72 w-auto"
@@ -235,8 +232,6 @@ export const AdminFilms = () => {
             </div>
           </div>
         </div>
-      </div>
-    </div>
   );
 };
 export default AdminFilms;

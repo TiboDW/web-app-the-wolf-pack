@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import SidebarAdmin from "../components/SidebarAdmin";
 import {
   ScheduleComponent,
@@ -8,16 +8,36 @@ import {
   ViewsDirective,
   ViewDirective,
 } from "@syncfusion/ej2-react-schedule";
+import { getAllMovies } from "../api/movies";
 
 export const AdminKalender = () => {
+  const [movies, setMovies] = useState([]);
+
+  useEffect(() => {
+    getAllMovies().then((movies) => setMovies(movies));
+  }, [movies]);
+
+  var data = movies.map((movie) => ({
+  
+    Id: movie._id,
+    Subject: movie.titel,
+    StartTime: new Date(2021, 10, 22, 20, 0),
+    EndTime: new Date(2021, 10, 22, 21, 0),
+  }));
+
   return (
-    <div className="App font-bold">
-      <div class="container mx-auto px-6 mt-16 text-left text-color-footer">
-        Kalender
-        <div class="border-t-2 border-gray-300 flex flex-wrap">
+    <div className="App font-bold flex flex-grow mb-3 text-color-footer">
+   
           <SidebarAdmin />
-          <div class="mt-2 ml-20 pr-20 float-right w-3/4 h-96 overflow-auto no-scroll">
-            <ScheduleComponent timezone='CET' startHour='9:00' endHour='24:00' firstDayOfWeek={1}>
+          <div className="mt-2 ml-20 pr-20 float-right w-auto h-auto overflow-auto ">
+            <ScheduleComponent
+              startHour="9:00"
+              endHour="24:00"
+              firstDayOfWeek={1}
+              eventSettings={{
+                dataSource: data,
+              }}
+            >
               <ViewsDirective>
                 <ViewDirective option="Day" />
                 <ViewDirective option="Week" />
@@ -26,8 +46,6 @@ export const AdminKalender = () => {
             </ScheduleComponent>
           </div>
         </div>
-      </div>
-    </div>
   );
 };
 export default AdminKalender;

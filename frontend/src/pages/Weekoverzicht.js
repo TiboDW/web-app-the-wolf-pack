@@ -28,7 +28,8 @@ export const Weekoverzicht = () => {
 
               <p className="text-center">{movie.titel}</p>
               {movie.vertoningen.map((vertoning) => (
-                  <p>{vertoning.dag.toUpperCase()} {vertoning.datum}: {vertoning.uur}</p>    
+                  <p>{vertoning.dag.toUpperCase()} {vertoning.datum}: {vertoning.uur} {console.log(vertoning.datum)}</p>  
+                   
               ))}
             </div>
           </>

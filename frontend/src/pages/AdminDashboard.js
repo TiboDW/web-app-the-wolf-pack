@@ -10,14 +10,11 @@ function capitalize(string){
 
 export const AdminDashboard = () => {
   return (
-    <div className="App font-bold">
-      <div class="container mx-auto px-6 mt-16 text-left text-color-footer">
-        Dashboard
-        <div class="border-t-2 border-gray-300 flex flex-wrap">
+    <div className="App font-bold flex flex-grow mb-3 text-color-footer">
           <SidebarAdmin />
           <div class="mt-2 ml-20 pr-20 float-right w-auto h-auto">
             <h1 class="text-center">{capitalize(today.toLocaleDateString('nl-NL', {weekday: "long"})) + '\t' +today.getDate() + '/' + (today.getMonth() + 1)}</h1>
-            <div class="grid grid-cols-4 gap-2 place-content-start mt-10 overflow-auto no-scroll h-96 w-auto">
+            <div class="grid grid-cols-4 gap-2 place-content-start mt-10 overflow-auto w-auto">
             <div class="ml-20 mb-5">
             <Link to="/film">  <img
                 class="h-72 w-auto"
@@ -101,8 +98,6 @@ export const AdminDashboard = () => {
           </div>
           </div>
         </div>
-      </div>
-    </div>
   );
 };
 export default AdminDashboard;
