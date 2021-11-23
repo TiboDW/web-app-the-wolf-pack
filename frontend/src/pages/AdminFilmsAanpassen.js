@@ -1,9 +1,22 @@
-import React from "react";
 import SidebarAdmin from "../components/SidebarAdmin";
+import React, {useEffect, useState} from "react";
+import { getMovieById } from "../api/movies";
+import {useLocation} from "react-router-dom";
 
-export const AdminFilmsAanpassen = () => {
+const AdminFilmsAanpassen = () => {
+
+  const location = useLocation();
+  const id = location.pathname.split("/")[3];
+
+  const [movie, setMovie] = useState(undefined);
+
+  useEffect(() => {
+    getMovieById(id).then(movie => setMovie(movie));
+  }, [id,movie]);
+
   return (
-    <div className="App font-bold">
+    <>
+    {movie && <div className="App font-bold">
       <div class="container mx-auto px-6 mt-16 text-left text-color-footer">
         Films
         <div class="border-t-2 border-gray-300 flex flex-wrap">
@@ -12,7 +25,7 @@ export const AdminFilmsAanpassen = () => {
             <div class="ml-20">
               <img
                 class="h-72 w-auto"
-                src="/images/Venom2.jpg"
+                src={movie.img_url}
                 alt="Workflow"
                 height="20%"
                 width="20%"
@@ -34,6 +47,7 @@ export const AdminFilmsAanpassen = () => {
                       class="border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white ml-2"
                       id="inline-full-title"
                       type="text"
+                      value={movie.titel}
                       required
                     />
                   </div>
@@ -52,6 +66,7 @@ export const AdminFilmsAanpassen = () => {
                       class="border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white ml-2"
                       id="inline-full-director"
                       type="text"
+                      value={movie.regisseur}
                       required
                     />
                   </div>
@@ -70,6 +85,7 @@ export const AdminFilmsAanpassen = () => {
                       class="border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white ml-2"
                       id="inline-full-cast"
                       type="text"
+                      value={movie.hoofdrollen.join(", ")}
                       required
                     />
                   </div>
@@ -78,16 +94,17 @@ export const AdminFilmsAanpassen = () => {
                   <div class="md:w-1/3">
                     <label
                       class="block text-color-label md:text-left mb-1 md:mb-0 pr-4"
-                      for="inline-full-genre"
+                      for="inline-full-trailer"
                     >
-                      Genre
+                      Trailer url
                     </label>
                   </div>
                   <div class="md:w-2/3">
                     <input
                       class="border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white ml-2"
-                      id="inline-full-genre"
+                      id="inline-full-trailer"
                       type="text"
+                      value={movie.trailer_url}
                       required
                     />
                   </div>
@@ -106,6 +123,7 @@ export const AdminFilmsAanpassen = () => {
                       class="border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white ml-2"
                       id="inline-full-time"
                       type="text"
+                      value={movie.duur}
                       required
                     />
                   </div>
@@ -124,6 +142,7 @@ export const AdminFilmsAanpassen = () => {
                       class="border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white ml-2"
                       id="inline-description"
                       type="text"
+                      value={movie.description}
                       required
                     />
                   </div>
@@ -178,6 +197,8 @@ export const AdminFilmsAanpassen = () => {
         </div>
       </div>
     </div>
+   }
+   </>
   );
 };
 export default AdminFilmsAanpassen;

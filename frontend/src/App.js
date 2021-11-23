@@ -56,7 +56,7 @@ function App() {
             authorized ? <> <Route path='/admin/dashboard' element={<AdminDashboard />} />
             <Route path='/admin/films' element={<AdminFilms />} />
             <Route path='/admin/films/toevoegen' element={<AdminFilmsToevoegen />} />
-            <Route path='/admin/films/1' element={<AdminFilmsAanpassen />} />
+            <Route path='/admin/films/*' element={<AdminFilmsAanpassen />} />
             <Route path='/admin/instellingen' element={<AdminInstellingen />} />
             <Route path='/admin/kalender' element={<AdminKalender />} /> </> 
             : isLoading ? <> <Route path='/admin/dashboard' element={<div> </div>} />

@@ -10,7 +10,7 @@ export const AdminFilms = () => {
 
   useEffect(() => {
     getAllMovies().then(movies => setMovies(movies));
-  }, [movies]);
+  }, []);
 
 
   return (
@@ -20,9 +20,9 @@ export const AdminFilms = () => {
           <SidebarAdmin />
           <div class="mt-2 ml-20 pr-20 float-right w-auto h-auto">
           <Link to="/admin/films/toevoegen" ><button class="shadow font-bold py-2 px-4 rounded hover:bg-gray-50 w-full text-center">Film toevoegen</button></Link>
-            <div class="grid grid-cols-4 gap-2 place-content-start mt-10 overflow-auto w-full">
+            <div class="grid grid-cols-4 gap-2 place-content-start mt-10 overflow-auto">
               {
-                movies.map(movie => <AdminMovie movie={movie} key={movie._id} setMovies={setMovies}/>)
+                movies.map(movie => <AdminMovie movie={movie} key={movie._id}/>)
               }
             </div>
           </div>

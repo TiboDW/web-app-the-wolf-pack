@@ -30,7 +30,7 @@ const AdminMovie = ({movie, setMovies}) => {
         <p class="mt-2 mb-2 w-44 truncate text-center">
           {movie.titel}
         </p>
-        <Link to="/admin/movies/1">
+        <Link to={`/admin/films/${movie._id}`}>
           <button class="shadow font-bold py-2 px-4 rounded hover:bg-gray-50">
             <svg
               xmlns="http://www.w3.org/2000/svg"

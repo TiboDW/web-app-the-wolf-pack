@@ -14,7 +14,9 @@ const jwks = require('jwks-rsa');
 
 const corsOptions = {
     origin: 'http://localhost:3000',
-    optionsSuccessStatus: 200
+    credntials: true,
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+    allowedHeaders: ['Content-Type', 'Authorization', 'Accept'],
   }
 
 app.use(express.json());
