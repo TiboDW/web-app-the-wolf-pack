@@ -100,7 +100,6 @@ app.post("/movies",checkToken, checkForAdminPermissions, async(req,res, next) =>
 app.put('/movies/:id',checkToken, checkForAdminPermissions, async(req,res, next) => {
     try {
         const updatedMovie = await Movie.findByIdAndUpdate(req.params.id, req.body, {new: true});
-        console.log(updatedMovie);
         res.status(200).send(updatedMovie);
     }
     catch(err) {

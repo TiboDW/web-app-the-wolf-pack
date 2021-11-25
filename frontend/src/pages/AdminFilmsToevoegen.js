@@ -1,6 +1,7 @@
 import React from "react";
 import SidebarAdmin from "../components/SidebarAdmin";
 
+
 export const AdminFilmsToevoegen = () => {
   return (
     <div className="App font-bold">
