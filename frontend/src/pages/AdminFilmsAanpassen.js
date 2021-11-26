@@ -21,8 +21,6 @@ const config = {
 
 const firebaseApp = initializeApp(config);
 
-// Get a reference to the storage service, which is used to create references in your storage bucket
-
 const AdminFilmsAanpassen = () => {
 
   const location = useLocation();
@@ -228,7 +226,6 @@ const AdminFilmsAanpassen = () => {
                       type="text"
                       value={description}
                       onChange={(e) => setDescription(e.target.value)}
-                      required
                     />
                   </div>
                 </div>

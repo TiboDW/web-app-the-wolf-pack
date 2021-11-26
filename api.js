@@ -89,6 +89,7 @@ app.get("/movies/:id", async(req,res, next) => {
 app.post("/movies",checkToken, checkForAdminPermissions, async(req,res, next) => { 
     try {
         const newMovie = new Movie(req.body);
+        console.log(newMovie);
         await newMovie.save();
         res.status(201).send(newMovie);
     }

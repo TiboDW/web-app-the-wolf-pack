@@ -2,8 +2,6 @@ import React from "react";
 import {Link} from "react-router-dom";
 import { useAuth0 } from "@auth0/auth0-react";
 import { deleteMovieByid } from "../api/movies";
-import {getAllMovies} from "../api/movies";
-
 
 const AdminMovie = ({movie}) => {
 
