@@ -51,7 +51,6 @@ function App() {
           <Route path='/verwacht' element={<WordtVerwacht />} />
           <Route path='/contact' element={<Contact />} />
           <Route path='/movies/*' element={<Film />} />
-
           {
             authorized ? <> <Route path='/admin/dashboard' element={<AdminDashboard />} />
             <Route path='/admin/films' element={<AdminFilms />} />
@@ -77,9 +76,7 @@ function App() {
             <Route path='/admin/films/1' element={<NotLoggedIn />} />
             <Route path='/admin/instellingen' element={<NotLoggedIn />} />
             <Route path='/admin/kalender' element={<NotLoggedIn />} /> </>
-
           }
-
           <Route path="/user/instellingen" element={<UserInstellingen />} />
         </Routes>
         <Footer />

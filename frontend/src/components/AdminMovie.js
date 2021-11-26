@@ -2,10 +2,8 @@ import React from "react";
 import {Link} from "react-router-dom";
 import { useAuth0 } from "@auth0/auth0-react";
 import { deleteMovieByid } from "../api/movies";
-import {getAllMovies} from "../api/movies";
 
-
-const AdminMovie = ({movie, setMovies}) => {
+const AdminMovie = ({movie}) => {
 
     const { getAccessTokenSilently } = useAuth0();
     
@@ -14,19 +12,20 @@ const AdminMovie = ({movie, setMovies}) => {
         const token = await getAccessTokenSilently();
         const status = await deleteMovieByid(movie._id, token);
         if (status === 204){
-          const movies = await getAllMovies();
-          setMovies([movies]);
+          window.location.reload();
         }
     }
     
     
     return (
         <div class="ml-20 mb-5">
-        <img
-          class="h-72 w-auto"
-          src={movie.img_url}
-          alt="Workflow"
-        />
+         <Link to={`/movies/${movie._id}`}>  <img
+            className="h-72 w-auto"
+            src={movie.img_url}
+            alt="Workflow"
+            height="20%"
+            width="20%"
+        /></Link>
         <p class="mt-2 mb-2 w-44 truncate text-center">
           {movie.titel}
         </p>
