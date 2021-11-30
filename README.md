@@ -73,7 +73,7 @@ Onze dynamische website zal ervoor zorgen dat de bioscoop over één website bes
 
 Onze oplossing bevat 2 applicaties. Enerzijds een React applicatie en anderzijds een Express.js REST API. De applicaties zijn terug te vinden op: 
 - De React app is gedeployed via firebase hosting: https://thewolfpackreact.web.app/
-- De REST API is gedployed via Heroku: https://api-thewolfpack.herokuapp.com/
+- De REST API is gedeployed via Nginx: https://www.the-wolf-pack.be/movies
 
 > Demo 1: Het deployment is niet geautomatiseerd voor beide apps. Dit willen we graag automatiseren tegen demo 2. 
 
