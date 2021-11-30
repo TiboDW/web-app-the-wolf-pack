@@ -72,7 +72,7 @@ Onze dynamische website zal ervoor zorgen dat de bioscoop over één website bes
 *Minimally, this section contains a public URL of the app. A description of how your software is deployed is a bonus. Do you do this manually, or did you manage to automate? Have you taken into account the security of your deployment process?*
 
 Onze oplossing bevat 2 applicaties. Enerzijds een React applicatie en anderzijds een Express.js REST API. De applicaties zijn terug te vinden op: 
-- De React app is gedeployed via firebase hosting: https://thewolfpackreact.web.app/
+- De React app is gedeployed via firebase hosting: https://thewolfpackreact.web.app
 - De REST API is gedeployed via Nginx: https://www.the-wolf-pack.be/movies
 
 > Demo 1: Het deployment is niet geautomatiseerd voor beide apps. Dit willen we graag automatiseren tegen demo 2. 
