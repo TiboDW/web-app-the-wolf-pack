@@ -11,6 +11,24 @@ import {
 import { DropDownListComponent } from "@syncfusion/ej2-react-dropdowns";
 import { DateTimePickerComponent } from "@syncfusion/ej2-react-calendars";
 import { isNullOrUndefined, L10n } from "@syncfusion/ej2-base";
+import { getMovieById } from "../api/movies";
+import {useLocation} from "react-router-dom";
+import { useAuth0 } from "@auth0/auth0-react";
+import { UpdateMovie } from "../api/movies";
+import { initializeApp } from "firebase/app";
+import { getStorage, ref , uploadBytes,getDownloadURL  } from "firebase/storage";
+
+const config = {
+  apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
+  authDomain: process.env.REACT_APP_FIREBASE_AUTHDOMAIN,
+  projectId: process.env.REACT_APP_FIREBASE_PROJECTID,
+  storageBucket: process.env.REACT_APP_FIREBASE_STORAGEBUCKET,
+  messagingSenderId: process.env.REACT_APP_FIREBASE_MESSAGING_SENDER_ID,
+  appId: process.env.REACT_APP_FIREBASE_APPID,
+  measurementId: process.env.REACT_APP_FIREBASE_MEASUREMENTID
+};  
+
+const firebaseApp = initializeApp(config);
 
 L10n.load({
   "en-US": {
@@ -22,6 +40,33 @@ L10n.load({
 
 export const Kalender = () => {
   const [movies, setMovies] = useState([]);
+
+  const location = useLocation();
+  const id = location.pathname.split("/")[3];
+
+  const [movie, setMovie] = useState(undefined);
+  const [titel, setTitel] = useState(undefined);
+  const [img , setImg] = useState(undefined);
+  const [description, setDescription] = useState(undefined);
+  const [regisseur, setRegisseur] = useState(undefined);
+  const [cast , setCast] = useState(undefined);
+  const [trailer, setTrailer] = useState(undefined);
+  const [duur , setDuur] = useState(undefined);
+  const [temp, setTemp] = useState(undefined);
+  const {getAccessTokenSilently} = useAuth0();
+
+  useEffect(() => {
+    getMovieById(id).then(movie => {
+      setMovie(movie);
+      setTitel(movie.titel);
+      setImg(movie.img_url);
+      setDescription(movie.description);
+      setRegisseur(movie.regisseur);
+      setCast(movie.hoofdrollen.join(", "));
+      setTrailer(movie.trailer_url);
+      setDuur(movie.duur);
+    });
+  }, [id]);
 
   useEffect(() => {
     getAllMovies().then((movies) => setMovies(movies));
@@ -94,7 +139,6 @@ export const Kalender = () => {
         EndTime: getEndTimeMovie(i, j),
         Zaal: getZaal(i,j),
       };
-      
       dataKalender.push(data);
     }
   }
@@ -153,6 +197,15 @@ export const Kalender = () => {
     );
   };
 
+  function getLocalDateString(date) {
+    return date.toLocaleDateString("nl-BE", {
+        day: "numeric",
+        month: "long",
+        year: "numeric",
+        weekday: 'long'
+    });
+}
+
   const popupClose = (args) => {
     if (args.type === "Editor" && !isNullOrUndefined(args.data)) {
       let filmElement = args.element.querySelector("#Film");
@@ -167,8 +220,16 @@ export const Kalender = () => {
       if (zaalElement) {
         args.data.Zaal = zaalElement.value;
       }
-    }
-    console.log(args.data);
+      
+      //Geeft de datum terug voor in vertoningen te steken
+      //console.log(getLocalDateString(new Date(args.data.StartTime)).split(" ").slice(1).join(" "));
+      //Geeft de dag terug voor in vertoningen te steken
+      //console.log(getLocalDateString(new Date(args.data.StartTime)).split(" ")[0]);
+      //Geeft het uur terug voor in vertoningen te steken
+      //console.log(new Date(args.data.StartTime).toTimeString().substring(0,5))
+
+      console.log(movies.filter(movie => movie.isReleased).find(movie => movie.titel === args.data.Film));
+    }  
   };
 
   return (
