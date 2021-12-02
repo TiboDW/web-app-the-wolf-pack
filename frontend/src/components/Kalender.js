@@ -43,22 +43,19 @@ export const Kalender = () => {
   var dataKalender = [];
 
   movies.filter(movie => movie.isReleased).map(movie => {
-      movie.vertoningen.map(vertoning => {
-        let starttime = new Date(vertoning.datum);
-        let endtime = new Date(vertoning.datum);
-        console.log(vertoning._id);
-        dataKalender.push({
-          Id: movie._id,
-          Subject: movie.titel,
-          StartTime: getStartTimeMovie(starttime, vertoning.uur),
-          EndTime: getEndTimeMovie(endtime, vertoning.uur),
-          Zaal: vertoning.zaal,
-          vertoning_id : vertoning._id,
-        });
+        movie.vertoningen.map(vertoning => {
+          let starttime = new Date(vertoning.datum);
+          let endtime = new Date(vertoning.datum);
+          dataKalender.push({
+            Id: movie._id,
+            Subject: movie.titel,
+            StartTime: getStartTimeMovie(starttime, vertoning.uur),
+            EndTime: getEndTimeMovie(endtime, vertoning.uur),
+            Zaal: vertoning.zaal,
+            vertoning_id : vertoning._id,
+          });
+        })
       })
-    })
-
-  console.log(dataKalender);
    // Nodig voor de data in de vertoningen te steken
    function getLocalDateString(date) {
     return date.toLocaleDateString("nl-BE", {
@@ -92,36 +89,34 @@ export const Kalender = () => {
           let vertoningElement = args.element.querySelector("#vertoning_id");
           if (vertoningElement){
             args.data.vertoning_id = vertoningElement.innerHTML;
-            //Code voor het update van de film
             const movie = await getMovieById(film._id);
-            movie.vertoningen.forEach(vertoning => {
-              if (vertoning._id === args.data.vertoning_id){
-                console.log("Check is gelukt");
-                console.log(getLocalDateString(new Date(args.data.StartTime)).split(" ").slice(1).join(" "));
-                console.log(getLocalDateString(new Date(args.data.StartTime)).split(" ")[0]);
-                console.log(args.data.StartTime.toTimeString().substring(0,5));
-                vertoning.datum = getLocalDateString(new Date(args.data.StartTime)).split(" ").slice(1).join(" ");
-                vertoning.dag = getLocalDateString(new Date(args.data.StartTime)).split(" ")[0];
-                vertoning.uur = new Date(args.data.StartTime).toTimeString().substring(0,5);
-                vertoning.zaal = args.data.Zaal;
-              }
-            });
-            console.log(movie);
-            const accessToken = await getAccessTokenSilently();
-            await UpdateMovie(film._id,accessToken,movie);
+            //Code voor het update van de film
+            if (args.data.vertoning_id === ""){
+              // doe create
+              movie.vertoningen.push({
+                datum: getLocalDateString(new Date(args.data.StartTime)).split(" ").slice(1).join(" "),
+                dag: getLocalDateString(new Date(args.data.StartTime)).split(" ")[0],
+                zaal: args.data.Zaal.toString(),
+                uur: new Date(args.data.StartTime).toTimeString().substring(0,5)
+              });
+              const accessToken = await getAccessTokenSilently();
+              await UpdateMovie(film._id,accessToken,movie);
+            }
+            else {
+              movie.vertoningen.forEach(vertoning => {
+                if (vertoning._id === args.data.vertoning_id){
+                  vertoning.datum = getLocalDateString(new Date(args.data.StartTime)).split(" ").slice(1).join(" ");
+                  vertoning.dag = getLocalDateString(new Date(args.data.StartTime)).split(" ")[0];
+                  vertoning.uur = new Date(args.data.StartTime).toTimeString().substring(0,5);
+                  vertoning.zaal = args.data.Zaal.toString();
+                }
+              });
+              const accessToken = await getAccessTokenSilently();
+              await UpdateMovie(film._id,accessToken,movie);
+            }  
         }
         }
       }
-      //Geeft de datum terug voor in vertoningen te steken
-      //console.log(getLocalDateString(new Date(args.data.StartTime)).split(" ").slice(1).join(" "));
-      //Geeft de dag terug voor in vertoningen te steken
-      //console.log(getLocalDateString(new Date(args.data.StartTime)).split(" ")[0]);
-      //Geeft het uur terug voor in vertoningen te steken
-      //console.log(new Date(args.data.StartTime).toTimeString().substring(0,5))
-
-      console.log(film._id);
-      console.log(movies.filter((movie) => movie.isReleased).find((movie) => movie.titel === args.data.Film));
-      console.log(args.data);
     }
   };
 
