@@ -42,7 +42,7 @@ Onze dynamische website zal ervoor zorgen dat de bioscoop over één website bes
 # Threat model
 *Describe your threat model. One or more architectural diagram expected. Also a list of the principal threats and what you will do about them*
 
-![ThreatModelDFD](https://user-images.githubusercontent.com/64362709/144897609-bacdbdc4-3830-41d4-ba55-0e2e86cdab03.jpg)
+![ThreatModelDFD (1)](https://user-images.githubusercontent.com/64362709/144930883-5520d2a4-32f1-45cd-94a1-8c97b94706b9.jpg)
 
 
 ## OWASP:
@@ -70,7 +70,9 @@ Onze dynamische website zal ervoor zorgen dat de bioscoop over één website bes
 | Elevation of privilege  | Bepaalde zaken kunnen doen zonder authorisatie | Rollen toekennen (Klant, Beheerder en Bezoeker) |
 
 ## Andere threads:
-- Insiders: Probleem: Een huidige werknemer of voormalige werknemer die toegang heeft tot gevoelige data en dit misbruikt. Oplossing: Alle acties die de admins doen gaan loggen. Als een admin stopt met werken in de cinema ervoor zorgen dat zijn account kan worden verwijderd door het hoofdadmin.
+- **Insiders:** Probleem: Een huidige werknemer of voormalige werknemer die toegang heeft tot gevoelige data en dit misbruikt. Oplossing: Alle acties die de admins doen gaan loggen. Als een admin stopt met werken in de cinema ervoor zorgen dat zijn account kan worden verwijderd door het hoofdadmin.
+- **Bot attack:** Probleem: Gebruik maken van web request voor het manipuleren van de website, API en gebruikers te manipuleren, te bedriegen of verstoren. Oplossing: CAPTCHA voorzien als men gaat inloggen, monitoren op mislukte inlog pogingen
+- **Cyber criminals:** Probleem: Stelen van gevoelige data. Oplossing: SSL certificaat voorzien, login pogingen voorzien en sterke wachtwoorden gebruiken.
 
 # Deployment
 *Minimally, this section contains a public URL of the app. A description of how your software is deployed is a bonus. Do you do this manually, or did you manage to automate? Have you taken into account the security of your deployment process?*
