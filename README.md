@@ -62,12 +62,15 @@ Onze dynamische website zal ervoor zorgen dat de bioscoop over één website bes
 ## STRIDE:
 | Threat  | Beschrijving van de bedreigingen | Oplossing |
 | ------------- | ------------- | ------------- |
-| Spoofing  | Een persoon of een programma doet zich voor als iemand anders | Authentication |
+| Spoofing  | Een persoon of een programma die zich voor doet als iemand anders | Authentication |
 | Tampering  | Data aangepast is zonder dat men dit weet (geen data integrity) | Encryptie van data in transit |
-| Repudiation  | Zeggen dat je een bepaalde actie niet hebt uitgevoerd | Wanneer een betaling wordt uitgevoerd een email voorzien van de aankoop of een PDF met daarin de aankoop factuur |
+| Repudiation  | Zeggen dat je een bepaalde actie niet hebt uitgevoerd | Wanneer een betaling wordt uitgevoerd een email voorzien van de aankoop of een PDF met daarin de aankoop factuur van de tickets |
 | Information disclosure  | Blootleggen van informatie aan iemand die niet geauthoriseerd is | Rollen toekennen (Klant, Beheerder en Bezoeker) |
-| Denial of service  | Is een situatie waarin het systeem onbedoeld niet beschikbaar is om een taak uit te voeren van een gebruiker | Combell |
+| Denial of service  | Is een situatie waarin het systeem onbedoeld niet beschikbaar is om een taak uit te voeren van een gebruiker | Google Firebase Hosting |
 | Elevation of privilege  | Bepaalde zaken kunnen doen zonder authorisatie | Rollen toekennen (Klant, Beheerder en Bezoeker) |
+
+## Andere threads:
+- Insiders: Probleem: Een huidige werknemer of voormalige werknemer die toegang heeft tot gevoelige data en dit misbruikt. Oplossing: Alle acties die de admins doen gaan loggen. Als een admin stopt met werken in de cinema ervoor zorgen dat zijn account kan worden verwijderd door het hoofdadmin.
 
 # Deployment
 *Minimally, this section contains a public URL of the app. A description of how your software is deployed is a bonus. Do you do this manually, or did you manage to automate? Have you taken into account the security of your deployment process?*
